@@ -1,12 +1,22 @@
-# Your code here
-
-
-
 def finder(files, queries):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    result = []
+    cache = {}
+    # process files
+    for file in files:
+        # add each file in the files
+        s = file.rpartition("/")
+        s = s[-1]
+        if s not in cache:
+            cache[s] = []
+        cache[s].append(file)
+    # process queries
+    for query in queries:
+        if query in cache:
+            for file in cache[query]:
+                result.append(file)
 
     return result
 
